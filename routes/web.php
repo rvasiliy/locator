@@ -18,3 +18,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('routes', 'RouteController@index');
+Route::get('routes/{user_id}', 'RouteController@detail')->where('user_id', '[0-9]+')->name('route_detail');
