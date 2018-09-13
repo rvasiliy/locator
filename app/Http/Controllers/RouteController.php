@@ -62,13 +62,11 @@ class RouteController extends Controller
             'center' => 'Russia, Moscow'
         ]);
 
-        $arrCoords = [
-            'points' => [],
-        ];
+        $arrCoords = [];
 
-        foreach ($coords as $coord) {
-            $arrCoords['points'][] = "{$coord->latitude},{$coord->longitude}";
-        }
+        $arrCoords['points'] = $coords->map(function ($coord) {
+            return "{$coord->latitude},{$coord->longitude}";
+        });
 
         $gmap->add_polyline($arrCoords);
 
